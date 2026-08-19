@@ -66,7 +66,7 @@ function moyenne(name){
             }
         }
     });
-    return res/count;
+    return Math.round((res/count) * 100) / 100;
 }
 function addTable() {
     while (data.length == 0|| subjects.length == 0) {
@@ -98,7 +98,7 @@ function addTable() {
             <tr>
                 <td>${test.subject}</td>
                 <td>${test.score}</td>
-                <td>10</td>
+                <td>${test.ponderation}</td>
                 <td><button onclick="deleteGrade(${test.id})">X</button></td>
             </tr>
         `;
