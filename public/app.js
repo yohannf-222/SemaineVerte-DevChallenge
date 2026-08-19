@@ -37,7 +37,7 @@ async function addGrade() {
     });
 
     loadGrades();
-    showTables()
+    loadTables();
 }
 
 async function addSubject() {
@@ -50,7 +50,7 @@ async function addSubject() {
     });
 
     loadSubjects();
-    loadTables()
+    loadTables();
 }
 
 async function deleteGrade(id) {

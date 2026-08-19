@@ -34,7 +34,7 @@ db.serialize(() => {
 /// Grades ///
 app.get('/grades', (req, res) => {
     db.all(`
-        SELECT grades.id, score, subject_id, subjects.name AS subject
+        SELECT grades.id, score, subject_id, ponderation, subjects.name AS subject
         FROM grades
         LEFT JOIN subjects ON subjects.id = grades.subject_id
     `, [], (err, rows) => {
@@ -43,11 +43,11 @@ app.get('/grades', (req, res) => {
 });
 
 app.post('/grades', (req, res) => {
-    const { subject_id, score } = req.body;
+    const { subject_id, score, ponderation } = req.body;
 
     db.run(
-        'INSERT INTO grades (subject_id, score) VALUES (?, ?)',
-        [subject_id, score > 6 ? 6 : score],
+        'INSERT INTO grades (subject_id, score,ponderation) VALUES (?, ? ,?)',
+        [subject_id, score > 6 ? 6 : score, ponderation],
         function (err) {
             if (err) {
                 console.error("DB ERROR:", err.message);
