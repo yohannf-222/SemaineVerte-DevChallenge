@@ -46,7 +46,7 @@ app.post('/grades', (req, res) => {
     const { subject_id, score } = req.body;
 
     db.run(
-        'INSERT INTO grades (subject_id, score) VALUES (?, ?)',
+        'INSERT INTO grades (subject_id, score, ponderation) VALUES (?, ?)',
         [subject_id, score > 6 ? 6 : score],
         function (err) {
             if (err) {

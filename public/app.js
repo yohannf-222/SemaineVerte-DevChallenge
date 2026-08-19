@@ -101,10 +101,9 @@ function addTable() {
                 <td>${test.ponderation}</td>
                 <td><button id="deletionButton" onclick="deleteGrade(${test.id})">X</button></td>
             </tr>
-        `;
+        `;        
     });
     });
-    
 
 
 }
