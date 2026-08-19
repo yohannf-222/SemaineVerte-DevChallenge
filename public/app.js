@@ -99,7 +99,7 @@ function addTable() {
                 <td>${test.subject}</td>
                 <td>${test.score}</td>
                 <td>${test.ponderation}</td>
-                <td><button onclick="deleteGrade(${test.id})">X</button></td>
+                <td><button id="deletionButton" onclick="deleteGrade(${test.id})">X</button></td>
             </tr>
         `;
     });

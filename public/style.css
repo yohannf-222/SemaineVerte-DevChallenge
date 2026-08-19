@@ -39,6 +39,9 @@ button {
     border-radius: 6px;
     cursor: pointer;
 }
+#deletionButton{
+    background-color: #df2d2d;
+}
 
 button:hover {
     background: #1b4fb5;
