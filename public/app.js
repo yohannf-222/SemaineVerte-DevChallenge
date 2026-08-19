@@ -28,11 +28,12 @@ async function loadSubjects() {
 async function addGrade() {
     const subject_id = document.getElementById('subjectSelect').value;
     const score = document.getElementById('score').value;
+    const ponderation = (document.getElementById('ponderation').value);
 
     await fetch('/grades', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject_id, score })
+        body: JSON.stringify({ subject_id, score, ponderation })
     });
 
     loadGrades();
@@ -67,7 +68,7 @@ function moyenne(name){
             }
         }
     });
-    return res/count;
+    return Math.round((res/count) * 100) / 100;
 }
 function loadTables() {
     while (data.length == 0|| subjects.length == 0) {
@@ -107,8 +108,8 @@ for (var i=tables.length-1; i>=0;i-=1)
             <tr>
                 <td>${test.subject}</td>
                 <td>${test.score}</td>
-                <td>10</td>
-                <td><button onclick="deleteGrade(${test.id})">X</button></td>
+                <td>${test.ponderation}</td>
+                <td><button id="deletionButton" onclick="deleteGrade(${test.id})">X</button></td>
             </tr>
         `;
     });
