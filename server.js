@@ -25,6 +25,7 @@ db.serialize(() => {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             subject_id INTEGER,
             score REAL,
+            ponderation REAL,
             FOREIGN KEY(subject_id) REFERENCES subjects(id)
         )
     `);
