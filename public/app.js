@@ -6,7 +6,7 @@ async function loadGrades() {
     console.log(data);
 
     //call table creation function
-    addTable();
+    loadTables();
 }
 
 async function loadSubjects() {
@@ -36,6 +36,7 @@ async function addGrade() {
     });
 
     loadGrades();
+    showTables()
 }
 
 async function addSubject() {
@@ -48,6 +49,7 @@ async function addSubject() {
     });
 
     loadSubjects();
+    loadTables()
 }
 
 async function deleteGrade(id) {
@@ -67,15 +69,23 @@ function moyenne(name){
     });
     return res/count;
 }
-function addTable() {
+function loadTables() {
     while (data.length == 0|| subjects.length == 0) {
         console.log("waiting for data");
         wait(200);
     }
     console.log("data: ", data);
     console.log("sub: ", subjects);
-    
+
+    var tables = document.getElementsByTagName("TABLE");
+    if(tables.length>0){
+for (var i=tables.length-1; i>=0;i-=1)
+   if (tables[i]) tables[i].parentNode.removeChild(tables[i]);
+    }
+
+
     subjects.forEach(subject => {
+        if (subject.name == "") return;
     let table = document.createElement('table');
     let header1 = document.createElement('th');
     let header2 = document.createElement('th');
