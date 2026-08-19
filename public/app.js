@@ -16,7 +16,7 @@ async function loadSubjects() {
     const select = document.getElementById('subjectSelect');
     select.innerHTML = '';
 
-    data.forEach(s => {
+    subjects.forEach(s => {
         select.innerHTML += `
             <option value="${s.id}">
                 ${s.name}
@@ -54,8 +54,18 @@ async function deleteGrade(id) {
     await fetch(`/grades/${id}`, { method: 'DELETE' });
     loadGrades();
 }
-function moyenne(){
-    return 4.3
+function moyenne(name){
+    let res = 0;
+    let count = 0;
+    data.forEach(test => {
+        if (name == test.subject){
+            res += test.score;
+            if (test.score > 0){
+            count++;
+            }
+        }
+    });
+    return res/count;
 }
 function addTable() {
     while (data.length == 0|| subjects.length == 0) {
