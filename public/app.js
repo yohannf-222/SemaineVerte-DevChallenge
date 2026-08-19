@@ -35,11 +35,12 @@ async function loadSubjects() {
 async function addGrade() {
     const subject_id = document.getElementById('subjectSelect').value;
     const score = document.getElementById('score').value;
+    const ponderation = (document.getElementById('ponderation').value);
 
     await fetch('/grades', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject_id, score })
+        body: JSON.stringify({ subject_id, score, ponderation })
     });
 
     loadGrades();
