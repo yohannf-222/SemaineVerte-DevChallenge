@@ -5,19 +5,6 @@ async function loadGrades() {
     data = await res.json();
     console.log(data);
 
-    const table = document.getElementById('table');
-    table.innerHTML = '';
-
-    data.forEach(g => {
-        table.innerHTML += `
-            <tr>
-                <td>${g.subject}</td>
-                <td>${g.score}</td>
-                <td><button onclick="deleteGrade(${g.id})">X</button></td>
-            </tr>
-        `;
-    });
-
     //call table creation function
     addTable();
 }
@@ -87,7 +74,7 @@ function addTable() {
     header1.innerHTML = `${subject.name}`;
     header2.innerHTML = "Note";
     header3.innerHTML = "Ponderation";
-    header4.innerHTML = `${moyenne()}`;
+    header4.innerHTML = `${moyenne(subject.name)}`;
     table.appendChild(header1);
     table.appendChild(header2);
     table.appendChild(header3);
@@ -95,6 +82,7 @@ function addTable() {
     
     document.body.appendChild(table);
             data.forEach(test => {
+                if(subject.name != test.subject) return;
         table.innerHTML += `
             <tr>
                 <td>${test.subject}</td>
